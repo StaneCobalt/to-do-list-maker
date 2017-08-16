@@ -1,0 +1,38 @@
+﻿body{
+  color:white;
+  text-align: center;
+}
+#mainHeader, #subHeader, #timeKeeper{
+	color:white;
+}
+#mainHeader{
+	font-size:3em;
+}
+#subHeader{
+	font-size:2em;
+}
+#timeKeeper{
+	font-size:8em;
+	margin-top:1em;
+}
+#inputText{
+  border:none;
+  border-bottom:2px solid white;
+  background-color:transparent;
+  text-align: center;
+  font-size: 2em;
+  width:34%;
+  margin-left:33%;
+  margin-right: 33%;
+  margin-top:1em;
+}
+#inputText:focus{
+  outline:none;
+}
+#inputButton{
+	display:none;
+}
+#hal{
+	max-width:40px;
+	float:right;
+}
