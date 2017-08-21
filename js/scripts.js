@@ -1,19 +1,19 @@
 function getTextBoxInfo(){
   var textBoxText = document.getElementById('inputText').innerHTML;
-  var boxCounter = document.getElementsByTagName('input').length - 2;
+  var boxCounter = document.getElementsByTagName('input').length - 1;
   if(boxCounter < 0) { boxCounter = 0; }
   var checkbox = document.createElement('input');
   checkbox.type = "checkbox";
-  checkbox.name = "name";
-  checkbox.value = textBoxText;
+  checkbox.name = "boxes";
+  if(textBoxText == "") { checkbox.value = "things"; }
+  else { checkbox.value = textBoxText; }
   checkbox.id = "checkBox" + boxCounter;
 
-  var label = document.createElement('label')
-  label.htmlFor = "id";
-  label.appendChild(document.createTextNode('text for label after checkbox'));
-
-  container.appendChild(checkbox);
-  container.appendChild(label);
+  //var label = document.createElement('label')
+  //label.htmlFor = "id";
+  //label.appendChild(document.createTextNode('text for label after checkbox'));
+  //container.appendChild(checkbox);
+  //container.appendChild(label);
 };
 
 function setHeaderText(){
