@@ -8,11 +8,10 @@ function getTextBoxInfo(){
   if(textBoxText == "") { checkbox.value = "things"; }
   else { checkbox.value = textBoxText; }
   checkbox.id = "checkBox" + boxCounter;
-
+  document.getElementById('inputDiv').appendChild(checkbox);
   //var label = document.createElement('label')
   //label.htmlFor = "id";
   //label.appendChild(document.createTextNode('text for label after checkbox'));
-  //container.appendChild(checkbox);
   //container.appendChild(label);
 };
 
