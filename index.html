@@ -27,10 +27,8 @@
           <p id="subHeader">Your plans for today</p>
         </div>
         <div class="row">
-          <form action="/page.php">
-            <input type="text" id="inputText" onkeydown = "if(event.keyCode == 13) document.getElementById('inputButton').click()">
-            <input type="button" id="inputButton" style="visible:false;" onclick="getTextBoxInfo();">
-          </form>
+            <input type="text" id="inputText" onkeydown = "if(event.keyCode == 13) { getTextBoxInfo(); }">
+		<script type="text/javascript">getTextBoxInfo();</script>
         </div>
       </div>
     </body>
