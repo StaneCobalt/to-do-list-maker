@@ -1,7 +1,7 @@
 function getTextBoxInfo(){
   var textBoxText = document.getElementById('inputText').innerHTML;
-  var boxCounter = document.getElementsByTagName('input').length - 1;
-
+  var boxCounter = document.getElementsByTagName('input').length - 2;
+  if(boxCounter < 0) { boxCounter = 0; }
   var checkbox = document.createElement('input');
   checkbox.type = "checkbox";
   checkbox.name = "name";
@@ -32,10 +32,6 @@ function getBackground(){
 	var num = Math.ceil(Math.random() * backgrounds);
 	document.body.background = 'images/bg' + num + '.jpg';
 	document.body.style.backgroundSize = "cover";
-};
-
-function textEntered(){
-	
 };
 
 function setTimeKeeper(){
