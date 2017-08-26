@@ -22,7 +22,7 @@ function getTextBoxInfo(){
   document.getElementById('inputDiv').appendChild(inputControl);
   document.getElementById('inputDiv').appendChild(inputLabel);
   document.getElementById('inputDiv').appendChild(inputBreak);
-  clearText();
+  clearText('inputText');
 };
 
 function setHeaderText(){
@@ -43,8 +43,8 @@ function getBackground(){
 	document.body.style.backgroundSize = "cover";
 };
 
-function clearText(){
-	document.getElementById('inputText').value = "";
+function clearText(e){
+	document.getElementById(e).value = "";
 };
 
 function checked(e){
