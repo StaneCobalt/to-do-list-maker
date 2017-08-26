@@ -1,28 +1,42 @@
 function getTextBoxInfo(){
-  var textBoxText = document.getElementById('inputText').value;
-  var boxCounter = document.getElementsByTagName('input').length - 1;
-  if(boxCounter < 0) { boxCounter = 0; }
-  var inputControl = document.createElement('input');
-  var inputLabel = document.createElement('label');
-  var inputBreak = document.createElement('br');
-  var checkboxID = "checkBox"+boxCounter;
-  var labelID = "label"+boxCounter;
-  inputControl.setAttribute('type','checkbox');
-  inputControl.setAttribute('value',checkboxID);
-  inputControl.setAttribute('name','boxes');
-  inputControl.setAttribute('id',checkboxID);
-  
-  inputLabel.setAttribute('for',checkboxID);
-  inputLabel.setAttribute('id',labelID);
-  inputLabel.style.fontSize = "xx-large";
-  inputLabel.style.padding = "10px";
-  inputLabel.style.fontWeight = "normal";
-  
-  inputLabel.appendChild(document.createTextNode(textBoxText));
-  document.getElementById('inputDiv').appendChild(inputControl);
-  document.getElementById('inputDiv').appendChild(inputLabel);
-  document.getElementById('inputDiv').appendChild(inputBreak);
-  clearText('inputText');
+	var textBoxText = document.getElementById('inputText').value;
+	var boxCounter = document.getElementsByTagName('input').length - 1;
+	if(boxCounter < 0) { boxCounter = 0; }
+	var checkBox = new makeBox(boxCounter);
+	var label = new makeLabel(boxCounter);
+	label.appendChild(document.createTextNode(textBoxText));
+	var newLine = document.createElement('br');
+	document.getElementById('inputDiv').appendChild(checkBox);
+	document.getElementById('inputDiv').appendChild(label);
+	document.getElementById('inputDiv').appendChild(newLine);
+	clearText();
+	
+	var checkID = "checkBox"+boxCounter;
+	var checkBox = document.getElementById(checkID);
+	checkBox.checked = false;
+	checkBox.onchange = function() { if(this.checked == true){window.alert('checked!');} };
+};
+
+function makeBox(n){
+	var checkID = "checkBox"+n;
+    var inputControl = document.createElement('input');
+    inputControl.setAttribute('type','checkbox');
+  	inputControl.setAttribute('value',checkID);
+  	inputControl.setAttribute('name','boxes');
+  	inputControl.setAttribute('id',checkID);
+    return inputControl;
+};
+
+function makeLabel(n){
+	var checkID = "checkBox"+n;
+	var labelID = "label"+n;
+	var inputLabel = document.createElement('label');
+	inputLabel.setAttribute('for',checkID);
+	inputLabel.setAttribute('id',labelID);
+	inputLabel.style.fontSize = "xx-large";
+	inputLabel.style.padding = "10px";
+	inputLabel.style.fontWeight = "normal";
+	return inputLabel;
 };
 
 function setHeaderText(){
@@ -43,12 +57,8 @@ function getBackground(){
 	document.body.style.backgroundSize = "cover";
 };
 
-function clearText(e){
-	document.getElementById(e).value = "";
-};
-
-function checked(e){
-	
+function clearText(){
+	document.getElementById('inputText').value = "";
 };
 
 function setTimeKeeper(){
