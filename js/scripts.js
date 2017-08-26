@@ -1,33 +1,28 @@
 function getTextBoxInfo(){
-  var textBoxText = document.getElementById('inputText').innerHTML;
+  var textBoxText = document.getElementById('inputText').value;
   var boxCounter = document.getElementsByTagName('input').length - 1;
   if(boxCounter < 0) { boxCounter = 0; }
-  var checkbox = document.createElement('input');
-  checkbox.type = "checkbox";
-  checkbox.name = "boxes";
-  checkbox.id = "checkBox" + boxCounter;
-  var label = document.createElement('label');
-  label.htmlFor = "checkbox" + boxCounter;
-  label.appendChild(document.createTextNode(textBoxText));
-  
-  document.getElementById('inputDiv').appendChild(checkbox);
-  document.getElementById('inputDiv').appendChild(label);
-  
-  
   var inputControl = document.createElement('input');
   var inputLabel = document.createElement('label');
-  var id = "checkBox"+boxCounter;
-  input.setAttribute('type','checkbox');
-  input.setAttribute('value',id);
-  input.setAttribute('name','boxes');
-  input.setAttribute('id',id);
+  var inputBreak = document.createElement('br');
+  var checkboxID = "checkBox"+boxCounter;
+  var labelID = "label"+boxCounter;
+  inputControl.setAttribute('type','checkbox');
+  inputControl.setAttribute('value',checkboxID);
+  inputControl.setAttribute('name','boxes');
+  inputControl.setAttribute('id',checkboxID);
   
-  inputLabel.setAttribute('for',id);
-  inputLabel.setAttribute('id',id);
+  inputLabel.setAttribute('for',checkboxID);
+  inputLabel.setAttribute('id',labelID);
+  inputLabel.style.fontSize = "xx-large";
+  inputLabel.style.padding = "10px";
+  inputLabel.style.fontWeight = "normal";
   
-  inputLabel.appendChild(document.createTextNode(id));
-  
-  /*https://www.codeschool.com/discuss/t/dynamically-create-checkboxes-with-javascript/26858/2*/
+  inputLabel.appendChild(document.createTextNode(textBoxText));
+  document.getElementById('inputDiv').appendChild(inputControl);
+  document.getElementById('inputDiv').appendChild(inputLabel);
+  document.getElementById('inputDiv').appendChild(inputBreak);
+  clearText();
 };
 
 function setHeaderText(){
@@ -46,6 +41,14 @@ function getBackground(){
 	var num = Math.ceil(Math.random() * backgrounds);
 	document.body.background = 'images/bg' + num + '.jpg';
 	document.body.style.backgroundSize = "cover";
+};
+
+function clearText(){
+	document.getElementById('inputText').value = "";
+};
+
+function checked(e){
+	
 };
 
 function setTimeKeeper(){
