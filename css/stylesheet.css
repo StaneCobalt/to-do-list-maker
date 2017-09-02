@@ -1,6 +1,6 @@
-﻿body{
-  color:white;
-  text-align: center;
+body{
+	color:white;
+	text-align: center;
 }
 #mainHeader, #subHeader, #timeKeeper{
 	color:white;
@@ -16,15 +16,13 @@
 	margin-top:1em;
 }
 #inputText{
-  border:none;
-  border-bottom:2px solid white;
-  background-color:transparent;
-  text-align: center;
-  font-size: 2em;
-  width:34%;
-  margin-left:33%;
-  margin-right: 33%;
-  margin-top:1em;
+	border:none;
+	border-bottom:2px solid white;
+	background-color:transparent;
+	text-align: center;
+	font-size: 2em;
+	width:34%;
+	margin:1em 33% 1em 33%;
 }
 #inputText:focus{
   outline:none;
@@ -42,4 +40,16 @@
 #inputButton:hover{
 	opacity:1.0;
 	font-size:1.5em;
+}
+@media only screen and (max-device-width:600px){
+	#inputButton{
+		width:40%;
+		font-size:1.5em;
+		opacity:0.9;
+	}
+	#inputText{
+		width:60%;
+		margin-left:20%;
+		margin-right: 20%;
+	}
 }
