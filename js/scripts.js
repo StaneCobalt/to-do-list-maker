@@ -109,6 +109,7 @@ function getBackground(){
 
 function resetBackgroundSize(){
 	document.body.style.backgroundSize = "cover";
+	window.location.reload();
 };
 
 function clearText(){
