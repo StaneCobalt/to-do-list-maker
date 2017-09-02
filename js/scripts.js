@@ -1,3 +1,25 @@
+var toDoList = TAFFY();
+
+function loadDB(){
+	/*get records of text and store into array*/
+	var i = 0;
+	toDoList().get();
+	toDoList().each(function(t){
+		var checkBox = new makeBox(i);
+		var label = new makeLabel(i);
+		label.appendChild(document.createTextNode(t));
+		var newLine = document.createElement('br');
+		document.getElementById('inputDiv').appendChild(checkBox);
+		document.getElementById('inputDiv').appendChild(label);
+		document.getElementById('inputDiv').appendChild(newLine);
+		var checkID = "checkBox"+i;
+		var checkBox = document.getElementById(checkID);
+		checkBox.checked = false;
+		checkBox.onchange = function() { if(this.checked == true){window.alert('checked!');} };
+		i += 1;
+	});
+};
+
 function getTextBoxInfo(){
 	var textBoxText = document.getElementById('inputText').value;
 	var boxCounter = document.getElementsByTagName('input').length - 1;
@@ -9,6 +31,8 @@ function getTextBoxInfo(){
 	document.getElementById('inputDiv').appendChild(checkBox);
 	document.getElementById('inputDiv').appendChild(label);
 	document.getElementById('inputDiv').appendChild(newLine);
+	toDoList.insert({todo:textBoxText});
+	toDoList.store("toDoList");
 	clearText();
 	
 	var checkID = "checkBox"+boxCounter;
@@ -19,12 +43,12 @@ function getTextBoxInfo(){
 
 function makeBox(n){
 	var checkID = "checkBox"+n;
-    var inputControl = document.createElement('input');
-    inputControl.setAttribute('type','checkbox');
-  	inputControl.setAttribute('value',checkID);
-  	inputControl.setAttribute('name','boxes');
-  	inputControl.setAttribute('id',checkID);
-    return inputControl;
+	var inputControl = document.createElement('input');
+	inputControl.setAttribute('type','checkbox');
+	inputControl.setAttribute('value',checkID);
+	inputControl.setAttribute('name','boxes');
+	inputControl.setAttribute('id',checkID);
+	return inputControl;
 };
 
 function makeLabel(n){
@@ -55,6 +79,8 @@ function getBackground(){
 	var num = Math.ceil(Math.random() * backgrounds);
 	document.body.background = 'images/bg' + num + '.jpg';
 	document.body.style.backgroundSize = "cover";
+	
+	document.body.style.backgroundRepeat = "no-repeat";
 };
 
 function clearText(){
@@ -70,4 +96,4 @@ function setTimeKeeper(){
 	var timeDisplay = hour + ":" + minutes;
 	document.getElementById("timeKeeper").innerHTML = timeDisplay;
 }
-setInterval(setTimeKeeper,10000);
+setInterval(setTimeKeeper,1000);
