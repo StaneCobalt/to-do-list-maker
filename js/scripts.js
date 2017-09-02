@@ -101,7 +101,7 @@ function getBackground(){
 	var backgrounds = 14;
 	var num = Math.ceil(Math.random() * backgrounds);
 	document.body.background = 'images/bg' + num + '.jpg';
-	document.body.style.backgroundSize = "100% 100vh";
+	document.body.style.backgroundSize = "100%";
 	document.body.style.backgroundRepeat = "no-repeat";
 };
 
