@@ -13,7 +13,6 @@
         	<title>To-Do List</title>
 	</head>
 	<body style="background-color:black;">
-      		<script type="text/javascript">getBackground();</script>
 		<input type="button" value="Clear List" id="inputButton" onclick="buttonClicked();" >
       		<div class="container-fluid">
 			<div class="row">
@@ -30,6 +29,7 @@
 			<div class="row" id="inputDiv">
 				<input type="text" class="col-12" id="inputText" onkeydown = "if(event.keyCode == 13) { getTextBoxInfo(); }" />
 			</div>
+			<script type="text/javascript">getBackground();</script>
 			<script>loadDB();</script>
     		</div>
     	</body>
