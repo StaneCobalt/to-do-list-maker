@@ -1,13 +1,15 @@
 var toDoList = TAFFY();
+toDoList.store("toDoList");
 
 function loadDB(){
 	/*get records of text and store into array*/
 	var i = 0;
-	toDoList().get();
+	var words = toDoList().select("todo");
+	var wordID = toDoList().select("todoID");
 	toDoList().each(function(t){
 		var checkBox = new makeBox(i);
 		var label = new makeLabel(i);
-		label.appendChild(document.createTextNode(t));
+		label.appendChild(document.createTextNode(words[i]));
 		var newLine = document.createElement('br');
 		document.getElementById('inputDiv').appendChild(checkBox);
 		document.getElementById('inputDiv').appendChild(label);
@@ -15,9 +17,39 @@ function loadDB(){
 		var checkID = "checkBox"+i;
 		var checkBox = document.getElementById(checkID);
 		checkBox.checked = false;
-		checkBox.onchange = function() { if(this.checked == true){window.alert('checked!');} };
+		checkBox.onchange = function() { if(this.checked == true){checkedBox(this.id);} };
 		i += 1;
 	});
+	/*implement a random congratulation messager for the alert?*/
+};
+
+function buttonClicked(){
+	toDoList().remove();
+	alert('items have been cleared!');
+};
+
+function checkedBox(c){
+	var num = c.substring(8);
+	var lbl = document.getElementById("label"+num);
+	var chk = document.getElementById(c);
+	var isReady = false;
+	var fader = setInterval(function() {
+		if(!chk.style.opacity){ chk.style.opacity = 1; }
+		if(!lbl.style.opacity){ lbl.style.opacity = 1; }
+		if (chk.style.opacity < 0.1) { clearInterval(fader);}
+		else {
+            chk.style.opacity -= 0.1;
+			lbl.style.opacity -= 0.1;
+			isReady = true;
+        }
+    }, 150);
+	function hideThem(){
+		if(isReady == false){ setTimeOut(hideThem(), 50); }
+		else{
+			lbl.style.display = 'none';
+			chk.style.display = 'none';
+		}
+	};
 };
 
 function getTextBoxInfo(){
@@ -31,14 +63,12 @@ function getTextBoxInfo(){
 	document.getElementById('inputDiv').appendChild(checkBox);
 	document.getElementById('inputDiv').appendChild(label);
 	document.getElementById('inputDiv').appendChild(newLine);
-	toDoList.insert({todo:textBoxText});
-	toDoList.store("toDoList");
+	toDoList.insert({todo: document.getElementById('inputText').value, todoID: boxCounter});
 	clearText();
-	
 	var checkID = "checkBox"+boxCounter;
 	var checkBox = document.getElementById(checkID);
 	checkBox.checked = false;
-	checkBox.onchange = function() { if(this.checked == true){window.alert('checked!');} };
+	checkBox.onchange = function() {if(this.checked == true){checkedBox(this.id);}};
 };
 
 function makeBox(n){
@@ -92,7 +122,8 @@ function setTimeKeeper(){
 	var hour = goTime.getHours();
 	var minutes = goTime.getMinutes();
 	if(minutes < 10) { minutes = "0" + minutes; }
-	if(hour > 12) hour = hour - 12;
+	if(hour > 12) hour -= 12;
+	if(hour == 0) hour = 12;
 	var timeDisplay = hour + ":" + minutes;
 	document.getElementById("timeKeeper").innerHTML = timeDisplay;
 }
