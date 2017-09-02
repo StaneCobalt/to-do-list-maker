@@ -41,6 +41,9 @@ body{
 	opacity:1.0;
 	font-size:1.5em;
 }
+#inputDiv{
+	margin-bottom:10em;
+}
 @media only screen and (max-device-width:600px){
 	#inputButton{
 		width:40%;
@@ -51,5 +54,9 @@ body{
 		width:60%;
 		margin-left:20%;
 		margin-right: 20%;
+	}
+	#inputDiv{
+		margin-bottom:0;
+		bottom:0;
 	}
 }
