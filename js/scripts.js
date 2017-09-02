@@ -20,12 +20,12 @@ function loadDB(){
 		checkBox.onchange = function() { if(this.checked == true){checkedBox(this.id);} };
 		i += 1;
 	});
-	/*implement a random congratulation messager for the alert?*/
 };
 
 function buttonClicked(){
 	toDoList().remove();
 	alert('items have been cleared!');
+	window.location.reload();
 };
 
 function checkedBox(c){
@@ -38,18 +38,11 @@ function checkedBox(c){
 		if(!lbl.style.opacity){ lbl.style.opacity = 1; }
 		if (chk.style.opacity < 0.1) { clearInterval(fader);}
 		else {
-            chk.style.opacity -= 0.1;
+			chk.style.opacity -= 0.1;
 			lbl.style.opacity -= 0.1;
 			isReady = true;
-        }
-    }, 150);
-	function hideThem(){
-		if(isReady == false){ setTimeOut(hideThem(), 50); }
-		else{
-			lbl.style.display = 'none';
-			chk.style.display = 'none';
 		}
-	};
+    	}, 150);
 };
 
 function getTextBoxInfo(){
@@ -108,8 +101,7 @@ function getBackground(){
 	var backgrounds = 14;
 	var num = Math.ceil(Math.random() * backgrounds);
 	document.body.background = 'images/bg' + num + '.jpg';
-	document.body.style.backgroundSize = "cover";
-	
+	document.body.style.backgroundSize = "100% 100vh";
 	document.body.style.backgroundRepeat = "no-repeat";
 };
 
