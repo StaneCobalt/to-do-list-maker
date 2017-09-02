@@ -20,6 +20,7 @@ function loadDB(){
 		checkBox.onchange = function() { if(this.checked == true){checkedBox(this.id);} };
 		i += 1;
 	});
+	resetBackgroundSize();
 };
 
 function buttonClicked(){
@@ -62,6 +63,7 @@ function getTextBoxInfo(){
 	var checkBox = document.getElementById(checkID);
 	checkBox.checked = false;
 	checkBox.onchange = function() {if(this.checked == true){checkedBox(this.id);}};
+	resetBackgroundSize();
 };
 
 function makeBox(n){
@@ -101,8 +103,12 @@ function getBackground(){
 	var backgrounds = 14;
 	var num = Math.ceil(Math.random() * backgrounds);
 	document.body.background = 'images/bg' + num + '.jpg';
-	document.body.style.backgroundSize = "100%";
+	document.body.style.backgroundSize = "cover";
 	document.body.style.backgroundRepeat = "no-repeat";
+};
+
+function resetBackgroundSize(){
+	document.body.style.backgroundSize = "cover";
 };
 
 function clearText(){
