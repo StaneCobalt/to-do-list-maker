@@ -2,7 +2,6 @@ var toDoList = TAFFY();
 toDoList.store("toDoList");
 
 function loadDB(){
-	/*get records of text and store into array*/
 	var i = 0;
 	var words = toDoList().select("todo");
 	var wordID = toDoList().select("todoID");
@@ -48,7 +47,7 @@ function checkedBox(c){
 
 function getTextBoxInfo(){
 	var textBoxText = document.getElementById('inputText').value;
-	var boxCounter = document.getElementsByTagName('input').length - 1;
+	var boxCounter = document.getElementsByTagName('input').length - 2;
 	if(boxCounter < 0) { boxCounter = 0; }
 	var checkBox = new makeBox(boxCounter);
 	var label = new makeLabel(boxCounter);
@@ -83,6 +82,7 @@ function makeLabel(n){
 	inputLabel.setAttribute('for',checkID);
 	inputLabel.setAttribute('id',labelID);
 	inputLabel.style.fontSize = "xx-large";
+	inputLabel.style.textShadow = "2px 2px black";
 	inputLabel.style.padding = "10px";
 	inputLabel.style.fontWeight = "normal";
 	return inputLabel;
